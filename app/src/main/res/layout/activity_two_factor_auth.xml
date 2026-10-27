@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_gradient_app">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp"
+            android:background="@drawable/bg_card_rounded">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TWO-FACTOR AUTH (2FA)"
+                android:textColor="#1565C0"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Security Verification Required&#10;Default Admin 2FA PIN: 888888"
+                android:textSize="14sp"
+                android:textColor="#555555"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"/>
+
+            <EditText
+                android:id="@+id/etSecurityPin"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Enter 6-digit Security PIN"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:textColor="#222222"
+                android:textColorHint="#777777"
+                android:paddingHorizontal="16dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/bg_card_rounded"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/btnVerifyPin"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="VERIFY &amp; LOGIN"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_button_rounded"
+                android:stateListAnimator="@null"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnTwoFactorBack"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="← Back to Login"
+                android:textColor="#1565C0"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

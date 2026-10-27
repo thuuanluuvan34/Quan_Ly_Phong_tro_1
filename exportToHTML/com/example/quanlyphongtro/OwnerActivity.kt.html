@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>OwnerActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #cf8e6d;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+OwnerActivity.kt</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">package </span><span class="s0">com</span><span class="s2">.</span><span class="s0">example</span><span class="s2">.</span><span class="s0">quanlyphongtro</span>
+
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">app</span><span class="s2">.</span><span class="s0">Activity</span>
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">content</span><span class="s2">.</span><span class="s0">Intent</span>
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">os</span><span class="s2">.</span><span class="s0">Bundle</span>
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">widget</span><span class="s2">.</span><span class="s0">Button</span>
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">widget</span><span class="s2">.</span><span class="s0">TextView</span>
+<span class="s0">import android</span><span class="s2">.</span><span class="s0">widget</span><span class="s2">.</span><span class="s0">Toast</span>
+
+<span class="s1">class </span><span class="s0">OwnerActivity : Activity</span><span class="s2">() {</span>
+
+    <span class="s0">private lateinit </span><span class="s1">var </span><span class="s0">owner: String</span>
+
+    <span class="s0">override </span><span class="s1">fun </span><span class="s0">onCreate</span><span class="s2">(</span><span class="s0">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s1">super</span><span class="s2">.</span><span class="s0">onCreate</span><span class="s2">(</span><span class="s0">savedInstanceState</span><span class="s2">)</span>
+
+        <span class="s0">setContentView</span><span class="s2">(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">layout</span><span class="s2">.</span><span class="s0">activity_owner</span><span class="s2">)</span>
+
+        <span class="s3">// Lấy tài khoản đã đăng nhập</span>
+        <span class="s1">val </span><span class="s0">username </span><span class="s2">= </span><span class="s0">intent</span><span class="s2">.</span><span class="s0">getStringExtra</span><span class="s2">(</span><span class="s4">&quot;username&quot;</span><span class="s2">)</span>
+
+        <span class="s1">if </span><span class="s2">(</span><span class="s0">username</span><span class="s2">.</span><span class="s0">isNullOrBlank</span><span class="s2">()) {</span>
+            <span class="s0">Toast</span><span class="s2">.</span><span class="s0">makeText</span><span class="s2">(</span>
+                <span class="s1">this</span><span class="s2">,</span>
+                <span class="s4">&quot;Không tìm thấy thông tin đăng nhập&quot;</span><span class="s2">,</span>
+                <span class="s0">Toast</span><span class="s2">.</span><span class="s0">LENGTH_SHORT</span>
+            <span class="s2">).</span><span class="s0">show</span><span class="s2">()</span>
+
+            <span class="s0">finish</span><span class="s2">()</span>
+            <span class="s1">return</span>
+        <span class="s2">}</span>
+
+        <span class="s0">owner </span><span class="s2">= </span><span class="s0">username</span>
+
+        <span class="s3">// Hiển thị lời chào</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">TextView</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">txtOwnerWelcome</span><span class="s2">).</span><span class="s0">text </span><span class="s2">=</span>
+            <span class="s4">&quot;Xin chào, </span><span class="s1">$</span><span class="s0">owner</span><span class="s4">!&quot;</span>
+
+        <span class="s3">// Hàm mở các màn hình quản lý</span>
+        <span class="s1">fun </span><span class="s0">openScreen</span><span class="s2">(</span><span class="s0">target: Class</span><span class="s2">&lt;</span><span class="s0">out Activity</span><span class="s2">&gt;) {</span>
+            <span class="s1">val </span><span class="s0">screenIntent </span><span class="s2">= </span><span class="s0">Intent</span><span class="s2">(</span><span class="s1">this</span><span class="s2">, </span><span class="s0">target</span><span class="s2">)</span>
+            <span class="s0">screenIntent</span><span class="s2">.</span><span class="s0">putExtra</span><span class="s2">(</span><span class="s4">&quot;owner&quot;</span><span class="s2">, </span><span class="s0">owner</span><span class="s2">)</span>
+            <span class="s0">startActivity</span><span class="s2">(</span><span class="s0">screenIntent</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Quản lý phòng</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnRooms</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">openScreen</span><span class="s2">(</span><span class="s0">RoomsActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Quản lý người thuê</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnTenants</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">openScreen</span><span class="s2">(</span><span class="s0">TenantsActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Quản lý điện</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnElectric</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">openScreen</span><span class="s2">(</span><span class="s0">ElectricActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Hóa đơn và thanh toán</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnBills</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">openScreen</span><span class="s2">(</span><span class="s0">BillsActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Thống kê doanh thu</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnStatistics</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">openScreen</span><span class="s2">(</span><span class="s0">StatsActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s3">// Đăng xuất</span>
+        <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">Button</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">btnOwnerLogout</span><span class="s2">).</span><span class="s0">setOnClickListener </span><span class="s2">{</span>
+            <span class="s1">val </span><span class="s0">loginIntent </span><span class="s2">= </span><span class="s0">Intent</span><span class="s2">(</span>
+                <span class="s1">this</span><span class="s2">,</span>
+                <span class="s0">LoginActivity::</span><span class="s1">class</span><span class="s2">.</span><span class="s0">java</span>
+            <span class="s2">)</span>
+
+            <span class="s0">loginIntent</span><span class="s2">.</span><span class="s0">flags </span><span class="s2">=</span>
+                <span class="s0">Intent</span><span class="s2">.</span><span class="s0">FLAG_ACTIVITY_NEW_TASK or</span>
+                        <span class="s0">Intent</span><span class="s2">.</span><span class="s0">FLAG_ACTIVITY_CLEAR_TASK</span>
+
+            <span class="s0">startActivity</span><span class="s2">(</span><span class="s0">loginIntent</span><span class="s2">)</span>
+            <span class="s0">finish</span><span class="s2">()</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">override </span><span class="s1">fun </span><span class="s0">onResume</span><span class="s2">() {</span>
+        <span class="s1">super</span><span class="s2">.</span><span class="s0">onResume</span><span class="s2">()</span>
+
+        <span class="s1">if </span><span class="s2">(!</span><span class="s0">::owner</span><span class="s2">.</span><span class="s0">isInitialized</span><span class="s2">) {</span>
+            <span class="s1">return</span>
+        <span class="s2">}</span>
+
+        <span class="s1">try </span><span class="s2">{</span>
+            <span class="s0">RentalDb</span><span class="s2">(</span><span class="s1">this</span><span class="s2">).</span><span class="s0">use </span><span class="s2">{ </span><span class="s0">db </span><span class="s2">-&gt;</span>
+
+                <span class="s1">val </span><span class="s0">rooms </span><span class="s2">= </span><span class="s0">db</span><span class="s2">.</span><span class="s0">rooms</span><span class="s2">(</span><span class="s0">owner</span><span class="s2">)</span>
+                <span class="s1">val </span><span class="s0">bills </span><span class="s2">= </span><span class="s0">db</span><span class="s2">.</span><span class="s0">bills</span><span class="s2">(</span><span class="s0">owner</span><span class="s2">)</span>
+
+                <span class="s3">// Tổng số phòng</span>
+                <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">TextView</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">txtRoomCount</span><span class="s2">).</span><span class="s0">text </span><span class="s2">=</span>
+                    <span class="s4">&quot;Tổng số phòng: </span><span class="s1">${</span><span class="s0">rooms</span><span class="s2">.</span><span class="s0">size</span><span class="s1">}</span><span class="s4">&quot;</span>
+
+                <span class="s3">// Hóa đơn chưa thanh toán đủ</span>
+                <span class="s1">val </span><span class="s0">unpaidCount </span><span class="s2">= </span><span class="s0">bills</span><span class="s2">.</span><span class="s0">count </span><span class="s2">{</span>
+                    <span class="s0">it</span><span class="s2">.</span><span class="s0">paid </span><span class="s2">&lt; </span><span class="s0">it</span><span class="s2">.</span><span class="s0">total</span>
+                <span class="s2">}</span>
+
+                <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">TextView</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">txtDebtCount</span><span class="s2">).</span><span class="s0">text </span><span class="s2">=</span>
+                    <span class="s4">&quot;Hóa đơn chưa thanh toán: </span><span class="s1">$</span><span class="s0">unpaidCount</span><span class="s4">&quot;</span>
+
+                <span class="s3">// Doanh thu điện đã thu</span>
+                <span class="s1">val </span><span class="s0">totalRevenue </span><span class="s2">= </span><span class="s0">bills</span><span class="s2">.</span><span class="s0">sumOf </span><span class="s2">{</span>
+                    <span class="s0">it</span><span class="s2">.</span><span class="s0">paid</span>
+                <span class="s2">}</span>
+
+                <span class="s0">findViewById</span><span class="s2">&lt;</span><span class="s0">TextView</span><span class="s2">&gt;(</span><span class="s0">R</span><span class="s2">.</span><span class="s0">id</span><span class="s2">.</span><span class="s0">txtRevenue</span><span class="s2">).</span><span class="s0">text </span><span class="s2">=</span>
+                    <span class="s4">&quot;Tiền điện đã thu: </span><span class="s1">$</span><span class="s0">totalRevenue </span><span class="s4">VNĐ&quot;</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s0">e: Exception</span><span class="s2">) {</span>
+            <span class="s0">Toast</span><span class="s2">.</span><span class="s0">makeText</span><span class="s2">(</span>
+                <span class="s1">this</span><span class="s2">,</span>
+                <span class="s4">&quot;Không thể tải dữ liệu Dashboard&quot;</span><span class="s2">,</span>
+                <span class="s0">Toast</span><span class="s2">.</span><span class="s0">LENGTH_LONG</span>
+            <span class="s2">).</span><span class="s0">show</span><span class="s2">()</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

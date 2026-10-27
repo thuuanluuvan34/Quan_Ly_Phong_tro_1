@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/txtOwnerWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, Owner!"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/btnRooms"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Manage Rooms"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnTenants"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Manage Tenants"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnElectric"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Electric Records"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnBills"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Bills &amp; Payments"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnContracts"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Lease Contracts"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnStatistics"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Statistics &amp; Revenue"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_rounded_button"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnOwnerLogout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Logout"
+            android:textColor="@color/red"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+</ScrollView>
